@@ -11,7 +11,7 @@ public class GameplayUI : MonoBehaviour
 
     private LevelManager levelManager;
 
-    private Queue<GameObject> heartsObject = new Queue<GameObject>();
+    private Stack<GameObject> heartsObject = new();
 
     private void Start()
     {
@@ -32,7 +32,7 @@ public class GameplayUI : MonoBehaviour
 
         for (int i = heartsObject.Count - 1; i >= count; i--)
         {    
-            Destroy(heartsObject.Dequeue());
+            Destroy(heartsObject.Pop());
 
             heartPos.position = new Vector2(heartPos.position.x - offSet, heartPos.position.y);
         }
@@ -54,7 +54,7 @@ public class GameplayUI : MonoBehaviour
     {
         GameObject heart = Instantiate(heartUI, heartPos.position, heartPos.rotation, gameObject.transform);
 
-        heartsObject.Enqueue(heart);
+        heartsObject.Push(heart);
 
         heartPos.position = new Vector2(heartPos.position.x + offSet, heartPos.position.y);
     }
