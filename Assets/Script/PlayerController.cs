@@ -5,18 +5,19 @@ using UnityEngine;
 public class PlayerController : MonoBehaviour
 {
     // HP
-    [SerializeField]
     private int maxHealth;
     private int currentHealth;
 
-    // Attack Range
+    // Attack Parameters
     [SerializeField]
     private Transform attackPoint;
     [SerializeField]
     private float attackPointRadius;
 
+    public float attackRate = 0.5f;
+    private float nextAttack = 0;
+
     // Platforms
-    [SerializeField]
     private Transform[] grounds;
     private int currentIndex = 0;
 
@@ -35,9 +36,13 @@ public class PlayerController : MonoBehaviour
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        detector = GetComponent<Collider2D>();
+        detector = GetComponent<Collider2D>();  
+    }
 
-        currentHealth = maxHealth;
+    private void Start()
+    {
+        // Get reference to platforms
+        grounds = GameObject.Find("LevelManager").GetComponent<LevelManager>().platforms;
     }
 
     void Update()
@@ -50,7 +55,7 @@ public class PlayerController : MonoBehaviour
         {
             Jump(false);
         }
-        else if (Input.GetKeyDown(shootKey))
+        else if (Input.GetKeyDown(shootKey) && Time.time >= nextAttack)
         {
             Shoot();
         }
@@ -59,6 +64,8 @@ public class PlayerController : MonoBehaviour
     private void Shoot()
     {
         animator.SetTrigger("Shoot");
+
+        nextAttack = Time.time + 1 / attackRate;
 
         Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.position, attackPointRadius, LayerMask.GetMask("Killable"));
 
@@ -106,5 +113,11 @@ public class PlayerController : MonoBehaviour
     private void OnDrawGizmosSelected()
     {
         Gizmos.DrawWireSphere(attackPoint.position, attackPointRadius);
+    }
+
+    public void SetMaxHealth(int value)
+    {
+        maxHealth = value;
+        currentHealth = value;
     }
 }

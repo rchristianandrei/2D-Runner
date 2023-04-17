@@ -161,9 +161,6 @@ MonoBehaviour:
   maxHealth: 3
   attackPoint: {fileID: 364965030069260285}
   attackPointRadius: 1
-  grounds:
-  - {fileID: 0}
-  - {fileID: 0}
   shootKey: 32
   jumpUpKey: 119
   jumpDownKey: 115
