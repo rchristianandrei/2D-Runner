@@ -5,15 +5,20 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     // Level Settings
-    [SerializeField] private int playerMaxHealth;
+    public int playerMaxHealth;
     [SerializeField] private float playerAttackRate;
     [SerializeField] private float backgroundSpeed = 2;
     [SerializeField] private float groundSpeed = 3;
+
+    public float enemySpeed = 3;
 
     // Level Prefabs
     [SerializeField] private GameObject backgroundPrefab;
     [SerializeField] private GameObject groundPrefab;
     [SerializeField] private GameObject playerPrefab;
+
+    // Flags
+    public bool isGameOver { get; set; } = false;
 
     // Platforms
     public Transform[] platforms;

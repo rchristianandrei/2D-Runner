@@ -10,6 +10,7 @@ public class MovingBackground : MonoBehaviour
 
     // Reference
     private BoxCollider2D size;
+    private LevelManager levelManager;
 
     private void Awake()
     {
@@ -17,8 +18,16 @@ public class MovingBackground : MonoBehaviour
         border = transform.position.x - (size.size.x / 4) * transform.localScale.x;
     }
 
+    private void Start()
+    {
+        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+    }
+
     private void Update()
     {
+        if (levelManager.isGameOver)
+            this.enabled = false;
+
         if (transform.position.x > border)
             transform.Translate(movingSpeed * Time.deltaTime * Vector2.left);
         else
