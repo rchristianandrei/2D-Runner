@@ -6,8 +6,7 @@ using UnityEngine;
 public class Enemy : MonoBehaviour
 {
 
-    [SerializeField]
-    private float runSpeed;
+    public float runSpeed;
     [SerializeField]
     private int damage;
 

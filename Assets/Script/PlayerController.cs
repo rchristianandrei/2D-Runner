@@ -97,6 +97,7 @@ public class PlayerController : MonoBehaviour
         animator.SetTrigger("Hurt");
         // Reduce Life
         currentHealth -= damage;
+        GameObject.Find("Gameplay Canvas").GetComponent<GameplayUI>().DecreaseHeart(damage);
 
         if (currentHealth <= 0)
             Dead();
@@ -106,6 +107,12 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetBool("Dead", true);
 
+        // Set flag to gameover
+        LevelManager lvlManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
+        if (lvlManager)
+            lvlManager.isGameOver = true;
+
+        // Off collider and script
         detector.enabled = false;
         this.enabled = false;
     }
