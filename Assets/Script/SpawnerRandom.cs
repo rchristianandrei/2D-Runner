@@ -4,7 +4,6 @@ using UnityEngine;
 
 public class SpawnerRandom : MonoBehaviour
 {
-    [SerializeField]
     private Transform[] platforms;
     [SerializeField]
     private GameObject[] enemyPrefabs;
@@ -16,6 +15,9 @@ public class SpawnerRandom : MonoBehaviour
 
     private void Start()
     {
+        // Get reference to platforms
+        platforms = GameObject.Find("LevelManager").GetComponent<LevelManager>().platforms;
+
         StartCoroutine(spawnEnemies());
     }
 

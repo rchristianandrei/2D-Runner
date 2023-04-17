@@ -136,5 +136,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   runSpeed: 2
-  damage: 3
+  damage: 1
   explosionEffect: {fileID: 5618937886914294930, guid: 7848299cb7d3cc6419d123f7224474de, type: 3}
