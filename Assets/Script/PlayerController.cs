@@ -113,6 +113,7 @@ public class PlayerController : MonoBehaviour
             lvlManager.isGameOver = true;
 
         // Off collider and script
+        lvlManager.Gameover();
         detector.enabled = false;
         this.enabled = false;
     }
