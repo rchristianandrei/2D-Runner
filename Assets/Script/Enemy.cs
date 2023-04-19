@@ -15,16 +15,19 @@ public class Enemy : MonoBehaviour
 
     // Reference
     private Animator animator;
+    private LevelManager levelManager;
 
     void Awake()
     {
         animator = GetComponent<Animator>();
+        levelManager = GameObject.Find("LevelManager").GetComponent<LevelManager>();
     }
 
     // Update is called once per frame
     void Update()
     {
-        transform.Translate(runSpeed * Time.deltaTime * Vector2.left);
+        if (!levelManager.isGameOver)
+            transform.Translate(runSpeed * Time.deltaTime * Vector2.left);
     }
 
     private void OnTriggerEnter2D(Collider2D collision)

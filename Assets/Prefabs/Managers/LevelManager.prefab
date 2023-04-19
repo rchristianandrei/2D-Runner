@@ -44,12 +44,18 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1cda251b2966e5341beb812b3a18944e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  playerMaxHealth: 2
+  playerMaxHealth: 1
+  playerAttackRate: 1
   backgroundSpeed: 2
   groundSpeed: 3
+  MaxProgress: 20
+  enemySpeed: 3
   backgroundPrefab: {fileID: 238156724234015546, guid: 0b86fc884a7ee074cb6dbfc4d5dfbde0, type: 3}
   groundPrefab: {fileID: 3480154851151502447, guid: 4cd72155909b7834db7adbaaa634ad0c, type: 3}
   playerPrefab: {fileID: 364965028711103398, guid: f4ee6358b9d1b814da485f76ba123195, type: 3}
+  winScreen: {fileID: 0}
+  loseScreen: {fileID: 0}
+  gameplayScreen: {fileID: 0}
   platforms:
   - {fileID: 0}
   - {fileID: 0}
