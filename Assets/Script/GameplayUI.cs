@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
+using UnityEngine.UI;
 
 public class GameplayUI : MonoBehaviour
 {
@@ -9,6 +10,8 @@ public class GameplayUI : MonoBehaviour
     [SerializeField] private Transform heartPos;
     [SerializeField] private float spaceBetweenHearts;
     private float offSet = 120;
+
+    [SerializeField] private Slider progressBar;
 
     private LevelManager levelManager;
 
@@ -22,6 +25,12 @@ public class GameplayUI : MonoBehaviour
         {
             SpawnHeart();
         }
+    }
+
+    private void Update()
+    {
+        if (!levelManager.isGameOver)
+            progressBar.value = (levelManager.currentProgress / levelManager.MaxProgress);
     }
 
     public void DecreaseHeart(int value)
