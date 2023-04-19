@@ -10,8 +10,8 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private float backgroundSpeed = 2;
     [SerializeField] private float groundSpeed = 3;
 
-    [SerializeField] private float MaxProgress;
-    private float currentProgress = 0;
+    public float MaxProgress;
+    public float currentProgress = 0;
 
     public float enemySpeed = 3;
 
