@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class GameplayUI : MonoBehaviour
 {
@@ -57,5 +58,15 @@ public class GameplayUI : MonoBehaviour
         heartsObject.Push(heart);
 
         heartPos.position = new Vector2(heartPos.position.x + offSet, heartPos.position.y);
+    }
+
+    public void LoadScene(string sceneName)
+    {
+        SceneManager.LoadScene(sceneName);
+    }
+
+    public void LoadSameScene()
+    {
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
     }
 }
