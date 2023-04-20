@@ -48,7 +48,7 @@ GameObject:
   - component: {fileID: 810799910864245616}
   - component: {fileID: 8304310655061078513}
   m_Layer: 5
-  m_Name: Porgress Bar
+  m_Name: Progress Bar
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -72,10 +72,10 @@ RectTransform:
   m_Father: {fileID: 9091877269383159309}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
-  m_AnchorMin: {x: 0.5, y: 0.5}
-  m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 160, y: 20}
+  m_AnchorMin: {x: 0.5, y: 0}
+  m_AnchorMax: {x: 0.5, y: 0}
+  m_AnchoredPosition: {x: 0, y: 34}
+  m_SizeDelta: {x: 902.2274, y: 23.9065}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &8304310655061078513
 MonoBehaviour:
@@ -187,7 +187,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_Color: {r: 0.6431373, g: 0.039215688, b: 0.42745098, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -276,7 +276,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 0, y: 1.5750014}
+  m_AnchoredPosition: {x: 0, y: 1.574997}
   m_SizeDelta: {x: 20, y: -3.1499975}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!222 &5564388164354941622
@@ -511,7 +511,7 @@ MonoBehaviour:
   heartUI: {fileID: 3630009876882740880, guid: ac452f7ef8d432f4eb44ba4d37ca3560, type: 3}
   heartPos: {fileID: 9091877270629848529}
   spaceBetweenHearts: 10
-  progressBar: {fileID: 0}
+  progressBar: {fileID: 8304310655061078513}
 --- !u!1 &9091877270629848528
 GameObject:
   m_ObjectHideFlags: 0
