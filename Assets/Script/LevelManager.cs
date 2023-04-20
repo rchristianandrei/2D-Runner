@@ -5,7 +5,7 @@ using UnityEngine;
 public class LevelManager : MonoBehaviour
 {
     // Level Settings
-    public int playerMaxHealth;
+    [HideInInspector] public int playerMaxHealth;
     [SerializeField] private float playerAttackRate;
     [SerializeField] private float backgroundSpeed = 2;
     [SerializeField] private float groundSpeed = 3;
@@ -25,6 +25,9 @@ public class LevelManager : MonoBehaviour
     [SerializeField] private GameObject loseScreen;
     [SerializeField] private GameObject gameplayScreen;
 
+    // Player
+    private PlayerController playerController;
+
     // Flags
     public bool isGameOver { get; set; } = false;
 
@@ -34,6 +37,10 @@ public class LevelManager : MonoBehaviour
 
     private void Start()
     {
+        // If Player Data exist
+        if (PlayerData.instance)
+            playerMaxHealth = PlayerData.instance.playerStarterHeart;
+
         // Spawns Background
         GameObject background = Instantiate(backgroundPrefab, Vector2.zero, backgroundPrefab.transform.rotation);
         background.GetComponent<MovingBackground>().movingSpeed = backgroundSpeed;
@@ -47,9 +54,9 @@ public class LevelManager : MonoBehaviour
 
         // Spawn Player
         GameObject player = Instantiate(playerPrefab, spawnPoint.position, spawnPoint.rotation);
-        PlayerController controller = player.GetComponent<PlayerController>();
-        controller.SetMaxHealth(playerMaxHealth);
-        controller.attackRate = playerAttackRate;
+        playerController = player.GetComponent<PlayerController>();
+        playerController.SetMaxHealth(playerMaxHealth);
+        playerController.attackRate = playerAttackRate;
     }
 
     private void Update()
@@ -67,6 +74,7 @@ public class LevelManager : MonoBehaviour
 
     public void Win()
     {
+        PlayerData.instance.playerStarterHeart = playerController.currentHealth;
         gameplayScreen.SetActive(false);
         winScreen.SetActive(true);
         GameObject.FindGameObjectWithTag("Player").GetComponent<Collider2D>().enabled = false;
