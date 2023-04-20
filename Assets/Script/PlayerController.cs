@@ -17,6 +17,10 @@ public class PlayerController : MonoBehaviour
     public float attackRate = 0.5f;
     private float nextAttack = 0;
 
+    // Audio
+    [SerializeField] private AudioClip jumpSound;
+    [SerializeField] private AudioClip shootSound;
+
     // Platforms
     private Transform[] grounds;
     private int currentIndex = 0;
@@ -33,10 +37,13 @@ public class PlayerController : MonoBehaviour
     private Animator animator;
     private Collider2D detector;
 
+    [SerializeField]
+    private AudioSource audioSource;
+
     private void Awake()
     {
         animator = GetComponent<Animator>();
-        detector = GetComponent<Collider2D>();  
+        detector = GetComponent<Collider2D>();
     }
 
     private void Start()
@@ -65,6 +72,9 @@ public class PlayerController : MonoBehaviour
     {
         animator.SetTrigger("Shoot");
 
+        audioSource.clip = shootSound;
+        audioSource.Play();
+
         nextAttack = Time.time + 1 / attackRate;
 
         Collider2D[] enemies = Physics2D.OverlapCircleAll(attackPoint.position, attackPointRadius, LayerMask.GetMask("Killable"));
@@ -77,6 +87,9 @@ public class PlayerController : MonoBehaviour
 
     private void Jump(bool toUp)
     {
+        audioSource.clip = jumpSound;
+        audioSource.Play();
+
         if (toUp)
         {
             if (currentIndex < grounds.Length - 1)
