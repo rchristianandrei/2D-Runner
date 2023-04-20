@@ -6,7 +6,7 @@ public class PlayerController : MonoBehaviour
 {
     // HP
     private int maxHealth;
-    private int currentHealth;
+    public int currentHealth;
 
     // Attack Parameters
     [SerializeField]

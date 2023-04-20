@@ -38,9 +38,7 @@ public class GameplayUI : MonoBehaviour
         if (value > heartsObject.Count)
             value = heartsObject.Count;
 
-        int count = heartsObject.Count - value;
-
-        for (int i = heartsObject.Count - 1; i >= count; i--)
+        for (int i = 0; i < value; i++)
         {    
             Destroy(heartsObject.Pop());
 
